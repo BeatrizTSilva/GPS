@@ -1,3 +1,4 @@
+# https://stackoverflow.com/questions/28867795/reading-i2c-data-from-gps
 import time
 import json
 import smbus
@@ -54,8 +55,8 @@ def parseResponse(gpsLine):
                 'alt', 'altUnit', 'galt', 'galtUnit',
                 'DPGS_updt', 'DPGS_ID']):
                 GPSDAT[k] = gpsComponents[i]
-            print gpsChars
-            print json.dumps(GPSDAT, indent=2)
+            print (gpsChars)
+            print (json.dumps(GPSDAT, indent=2))
 
 def readGPS():
     c = None
@@ -73,8 +74,8 @@ def readGPS():
     except IOError:
         time.sleep(0.5)
         connectBus()
-    except Exception, e:
-        print e
+    except Exception as e:
+        print (e)
         LOG.error(e)
 
 connectBus()
